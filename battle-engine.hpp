@@ -13,7 +13,7 @@ public:
   std::string name;
   int health;
   void display_stats();
-  void attack(Combatant);
+  void attack(Combatant &);
   int defend(int);
   Combatant(int, int, std::string, int);
 };
@@ -32,7 +32,7 @@ void Combatant::display_stats() {
   std::cout << "Strength: " << strength << ".\nDefense: " << defense << ".\n";
 }
 
-void Combatant::attack(Combatant opponent) {
+void Combatant::attack(Combatant & opponent) {
   int original_health = opponent.health;
 
   int new_health = original_health - opponent.defend(strength);
