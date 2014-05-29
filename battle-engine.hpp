@@ -4,6 +4,13 @@
 #include <iostream>
 #include <string>
 
+void greeting();
+
+
+void greeting()
+{
+  std::cout << "Hello World!\n";
+}
 
 
 #endif
