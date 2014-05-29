@@ -27,6 +27,7 @@ Combatant::Combatant(int str, int def, std::string nam, int hea)
 
 void Combatant::display_stats() {
   std::cout << "Name: " << name << ".\nHealth: " << health << ".\n";
+  std::cout << "Strength: " << strength << ".\nDefense: " << defense << ".\n";
 }
 
 void greeting()
