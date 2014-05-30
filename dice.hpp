@@ -30,8 +30,6 @@ int Die::roll(int times)
   return out;
 }
 
-srand(time(NULL));
-
 Die d2(2);
 Die d3(3);
 Die d4(4);
