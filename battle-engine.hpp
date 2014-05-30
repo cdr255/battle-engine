@@ -11,23 +11,27 @@ class Combatant {
   int strength;
   int constitution;
   int defense;
+  int accuracy;
 public:
   bool dead;
   std::string name;
   int health;
+  int evasion;
   void display_stats();
   void attack(Combatant &);
   int defend(int&);
-  Combatant(int, int, int, std::string, int);
+  Combatant(int, int, int, int, int, std::string, int);
 };
 
 
-Combatant::Combatant(int str, int con, int def, std::string nam, int hea)
+Combatant::Combatant(int str, int con, int def, int acc, int eva, std::string nam, int hea)
 {
   dead = false;
   constitution = con;
   strength = str;
   defense = def;
+  accuracy = acc;
+  evasion = eva;
   name = nam;
   health = hea;
 }
@@ -39,11 +43,16 @@ void Combatant::display_stats() {
 
 void Combatant::attack(Combatant & opponent) {
   int original_health = opponent.health;
-  int damage = strength + d6.roll(1);
-
-  int new_health = original_health - opponent.defend(damage);
-  
-  opponent.health = new_health;
+  if(d20.roll(1) + accuracy > opponent.evasion)
+    {
+      int damage = strength + d6.roll(1);
+      int new_health = original_health - opponent.defend(damage);
+      opponent.health = new_health;
+    }
+  else
+    {
+      std::cout << "The Attack Missed!\n";
+    }
 }  
 
 int Combatant::defend(int & str) {
