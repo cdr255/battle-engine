@@ -3,6 +3,7 @@
 #define BATTLE_ENGINE
 #include <iostream>
 #include <string>
+#include "dice.hpp"
 
 void greeting();
 
@@ -38,8 +39,9 @@ void Combatant::display_stats() {
 
 void Combatant::attack(Combatant & opponent) {
   int original_health = opponent.health;
+  int damage = strength + d6.roll(1);
 
-  int new_health = original_health - opponent.defend(strength);
+  int new_health = original_health - opponent.defend(damage);
   
   opponent.health = new_health;
 }  
