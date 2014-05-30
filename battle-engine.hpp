@@ -8,19 +8,23 @@ void greeting();
 
 class Combatant {
   int strength;
+  int constitution;
   int defense;
 public:
+  bool dead;
   std::string name;
   int health;
   void display_stats();
   void attack(Combatant &);
-  int defend(int);
-  Combatant(int, int, std::string, int);
+  int defend(int&);
+  Combatant(int, int, int, std::string, int);
 };
 
 
-Combatant::Combatant(int str, int def, std::string nam, int hea)
+Combatant::Combatant(int str, int con, int def, std::string nam, int hea)
 {
+  dead = false;
+  constitution = con;
   strength = str;
   defense = def;
   name = nam;
@@ -40,7 +44,7 @@ void Combatant::attack(Combatant & opponent) {
   opponent.health = new_health;
 }  
 
-int Combatant::defend(int str) {
+int Combatant::defend(int & str) {
   if (str > defense)
     return (str - defense);
   else 
