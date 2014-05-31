@@ -3,6 +3,8 @@ battle-engine
 
 Project implementing the core of a jrpg battle engine.
 
+**NOTE: Requires my [dice](https://github.com/cdr255/dice) library!**
+
 Currently exists of a Class "Combatant," which has the following stats:
 
 * A Name
